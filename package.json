@@ -1,6 +1,6 @@
 {
   "name": "react-pouchdb",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "React wrapper for PouchDB that also subscribes to changes.",
   "main": "cjs",
   "module": "es",
@@ -11,7 +11,7 @@
     "dev:testapp": "concurrently \"npm run watch\" \"npm link && cd testapp && npm link react-pouchdb && npm start\"",
     "dev:todoapp": "concurrently \"npm run watch\" \"npm link && cd todoapp && npm link react-pouchdb && npm start\"",
     "eslint": "eslint {{.,testapp,todoapp},{scripts,src,testapp/src,todoapp/src}/**}/*.js --fix",
-    "inbuild": "node -r esm scripts/build --source-maps",
+    "inbuild": "npm i esm && node -r esm scripts/build --source-maps",
     "lint": "npm run eslint && npm run prettier",
     "postbuild": "npm run update-submodules",
     "postpublish": "cd testapp && npm install react-pouchdb@latest && cd ../todoapp && npm install react-pouchdb@latest",
@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",
+    "eslint": "^8.6.0",
     "fast-json-stable-stringify": "^2.0.0",
     "hoist-non-react-statics": "^3.3.0",
     "lodash": "^4.17.15",

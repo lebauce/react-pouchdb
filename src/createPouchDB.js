@@ -1,4 +1,17 @@
-import PouchDB from 'pouchdb';
+import PouchDB from '@craftzdog/pouchdb-core-react-native';
+import HttpPouch from 'pouchdb-adapter-http';
+import replication from 'pouchdb-replication';
+import mapreduce from 'pouchdb-mapreduce';
+
+import SQLite from 'react-native-sqlite-2';
+import SQLiteAdapterFactory from 'pouchdb-adapter-react-native-sqlite';
+
+const SQLiteAdapter = SQLiteAdapterFactory(SQLite);
+
+PouchDB.plugin(HttpPouch)
+  .plugin(replication)
+  .plugin(mapreduce)
+  .plugin(SQLiteAdapter);
 
 export default function createPouchDB({
   // Time to wait for suspended component to actually mount and subscribe.
